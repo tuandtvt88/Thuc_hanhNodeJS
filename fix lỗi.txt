@@ -1,0 +1,16 @@
+sửa lỗi:
+npm : File C:\Program Files\nodejs\npm.ps1 cannot be loaded because running scripts is disabled on this system. For more information, see
+about_Execution_Policies at https:/go.microsoft.com/fwlink/?LinkID=135170.
+At line:1 char:1
++ npm i
++ ~~~
+    + CategoryInfo          : SecurityError: (:) [
+chạy câu lệnh sau:
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+
+
+
+PS C:\FULLSTACK\NodeJS\src> npx sequelize-cli init
+Unable to resolve sequelize package in C:\FULLSTACK\NodeJS\src
+chạy lệnh:npm install sequelize sequelize-cli
+
