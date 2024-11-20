@@ -1,0 +1,13 @@
+1.Mở thư đúng thư mục cần up trong cmd phần mềm lập trình và chạy các dòng lệnh sau:
+git init
+git add .
+git commit -m "bt"
+git config --global user.name "tuandtvt88"
+git remote add origin https://github.com/tuandtvt88/FunctionComponentProduct.git
+git push origin master
+
+
+2.Khi có sự thay đổi về code muốn cập nhật lên GitHub thì chạy câu lệnh:
+git add .
+git commit -m "bt"
+git push origin master
