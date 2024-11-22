@@ -5,10 +5,7 @@ let initWebRoutes = (app) => {
     router.get('/', homeController.getHomePage);
 
     router.get('/about', homeController.getAboutPage);
-
-    router.get('/home', (req, res) => {
-        return res.send('Hello world with Tuân')
-    });
+    router.get('/crud', homeController.getCRUD);
 
  
     return app.use("/", router);
