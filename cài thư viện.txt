@@ -16,3 +16,6 @@ npx sequelize-cli seed:generate --name demo-user
 
 npx sequelize-cli db:seed:all
 
+npm install --save bcrypt@5.1.1
+
+npm install --save bcryptjs@2.4.3
