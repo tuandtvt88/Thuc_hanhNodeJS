@@ -1,5 +1,6 @@
 import bcrypt from 'bcryptjs';
 import db from '../models/index';
+import { raw } from 'body-parser';
 
 const salt = bcrypt.genSaltSync(10);
 
@@ -57,13 +58,14 @@ let getUserInfoById = (userId) => {
     return new Promise(async (resolve, reject) => { 
         try{
      let user = await db.User.findOne({
-        where: { id: userId}
+        where: { id: userId},
+        raw:true,
     })
     if(user) {
         resolve (user)
     }
     else {
-        resolve ([])
+        resolve ({})
     }
     
     }catch(e) { 
