@@ -73,8 +73,38 @@ let getUserInfoById = (userId) => {
     }
     })
     }
+
+    let updateUserData = (data) => {
+        return new Promise(async (resolve, reject) => {
+          try {
+            // Tìm user dựa trên ID
+            let user = await db.User.findOne({
+              where: { id: data.id },
+            });
+      
+            if (user) {
+              // Cập nhật thông tin user
+              user.firstName = data.firstName;
+              user.lastName = data.lastName;
+              user.address = data.address;
+      
+              // Lưu thông tin cập nhật
+              await user.save();
+              let allUsers = await db.User.findAll();
+              resolve(allUsers); // Trả về user sau khi cập nhật thành công
+            } else {
+              resolve("User not found"); // Xử lý khi không tìm thấy user
+            }
+          } catch (e) {
+            console.error("Error updating user:", e);
+            reject(e); // Trả về lỗi cho promise
+          }
+        });
+      };
+      
 module.exports = {
     createNewUser: createNewUser,
     getAllUsers: getAllUsers,
-    getUserInfoById: getUserInfoById
+    getUserInfoById: getUserInfoById,
+    updateUserData: updateUserData
 }
