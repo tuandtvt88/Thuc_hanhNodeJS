@@ -9,14 +9,19 @@ let handleUserLogin = (email, password) => {
                 //user already exists//
 
                 let user = await db.User.findOne({
-                    where: { email: email }
+                    attributes: ['email', 'roleId', 'password'],
+                    where: { email: email },
+                    raw: true
                 });
                 if (user) {
                     //compare password
                     let check = await bcrypt.compareSync(password, user.password);
+
                     if (check) {
                         userData.errCode = 0;
                         userData.errMessage = 'OK';
+
+                        delete user.password;
                         userData.user = user;
                     } else {
                         userData.errCode = 3;
